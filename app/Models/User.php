@@ -22,6 +22,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+     
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
