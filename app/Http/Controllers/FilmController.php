@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Gate;
+use APP\Models\Film;
+use APP\Models\Gener;
 
-class DashboardController extends Controller
+
+class FilmController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-     {
-         $this->middleware(['auth','verified']);
-     }
     public function index()
     {
-        if(Gate::denies('dashboard')){
-            return redirect(route('auth'));
-        }
-        return view('dashbord.dashboard');
+        /*$film = Film::all();
+        return view('webiste.index',compact('film')) ;*/
     }
 
     /**
@@ -31,8 +27,11 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    { 
+      /*  $geners = Gener::all();
+        return view('dashbord.dashboard',compact('geners'));*/
+        return view('dashbord.dashboard');
+
     }
 
     /**
@@ -43,7 +42,39 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'date-show'=>'required',
+            'director'=>'required',
+            'prod-company'=>'required',
+            'cast'=>'required',
+            'photo'=>'required|image',
+             //'geners'=>'required'
+             
+            ]);
+            $photo = $request->photo;
+            $newPhoto = time().$photo->getClientOriginalName();
+            $photo->move('images',$newPhoto);
+
+            $film = Film::create([
+                 
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'date-show'=>$request->date-show,
+                'director'=>$request->director,
+                'prod-company'=>$request->prod-company,
+                'cast'=>$request->cast,
+                'photo'=>'images'.$newPhoto
+
+             ]);
+
+
+            // $film->geners()->attach($request->geners);
+             return redirect()->back();
+
+
+ 
     }
 
     /**

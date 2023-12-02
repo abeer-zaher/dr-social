@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FilmController;
 use App\Http\Controllers\Admin\UserController;
 
 /*
@@ -22,7 +23,8 @@ Route::get('/', function () {
 
 Route::get('/', function () {
     return view('website.index');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])
+->name('auth');
 /*
 Route::get('/', function () {
     return view('home');
@@ -41,6 +43,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 });
 
 
-//Route::resource('/admin/users','Admin\UserController', ['except' => ['show', 'create', 'store']]);
+Route::get('/film/create','FilmController@create')->name('films.create');
 
+Route::post('/film/store','FilmController@store')->name('films.store');
+
+ 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

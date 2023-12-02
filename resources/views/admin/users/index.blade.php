@@ -29,8 +29,16 @@
       <td>{{$user->email}}</td>
       <td>{{ implode(',',$user->roles()->get()->pluck('name')->toArray())}}</td>
       <td>
+        @can('edit-users')
     <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-primary">edit</button></a>
-    <a href="{{route('admin.users.destroy' , $user->id)}}"><button type="button" class="btn btn-warning">delete</button></a>
+    @endcan
+    @can('delete-users')
+    <form action="{{route('admin.users.destroy', $user)}}" method="POST" class="float-left">
+    <input type="hidden" name="_token" value="{{ csrf_token()}}"/>
+    {{method_field('DELETE')}}
+    <button type="button" class="btn btn-warning">delete</button>
+</form>
+@endcan
 
 </td>
     </tr>
