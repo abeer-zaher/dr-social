@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('geners', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('gener_id');
+        Schema::create('films', function (Blueprint $table) {
+            $table->increments('film_id');
             $table->string('name');
+            $table->text('description');
+            $table->string('date-show');
+            $table->string('director');
+            $table->string('prod-company');
+            $table->longtext('cast');
+            $table->string('photo');
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('geners');
+        Schema::dropIfExists('films');
     }
 };

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use APP\Models\Film;
-use APP\Models\Gener;
+use App\Models\Film;
+use App\Models\Gener;
 
 
 class FilmController extends Controller
@@ -28,9 +28,9 @@ class FilmController extends Controller
      */
     public function create()
     { 
-      /*  $geners = Gener::all();
-        return view('dashbord.dashboard',compact('geners'));*/
-        return view('dashbord.dashboard');
+         $geners = Gener::all();
+        return view('dashbord.dashboard',compact('geners')); 
+       // return view('dashbord.dashboard');
 
     }
 
@@ -42,6 +42,8 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
+         
+
         $request->validate([
             'name'=>'required',
             'description'=>'required',
@@ -50,7 +52,7 @@ class FilmController extends Controller
             'prod-company'=>'required',
             'cast'=>'required',
             'photo'=>'required|image',
-             //'geners'=>'required'
+             'geners'=>'required'
              
             ]);
             $photo = $request->photo;
@@ -61,16 +63,16 @@ class FilmController extends Controller
                  
                 'name'=>$request->name,
                 'description'=>$request->description,
-                'date-show'=>$request->date-show,
+                'date-show'=>$request->date_show,
                 'director'=>$request->director,
-                'prod-company'=>$request->prod-company,
+                'prod-company'=>$request->prod_company,
                 'cast'=>$request->cast,
                 'photo'=>'images'.$newPhoto
 
              ]);
 
 
-            // $film->geners()->attach($request->geners);
+             $film->geners()->attach($request->geners);
              return redirect()->back();
 
 

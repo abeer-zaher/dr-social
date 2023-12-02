@@ -236,35 +236,51 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-header">
                 <h5 class="m-0">Add film</h5>
               </div>
-              <div class="card-body">
+            <div class="card-body">
+             
               <form action="{{route('films.store')}}" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token()}}"/>
               <div class="form-group">
+             
               <lable>Film name</lable>
               <input type="text" class="form-control" name="name" required>
+             
               <lable>Description</lable>
               <textarea type="text" class="form-control" name="description" required>
               </textarea>
+             
               <lable>Date show</lable>
               <input type="text" class="form-control" name="date-show" required>
+             
               <lable>director</lable>
               <input type="text" class="form-control" name="director" required>
+             
               <lable>prod-company</lable>
               <input type="text" class="form-control" name="prod-company" required>
+             
               <lable>cast</lable>
               <textarea type="text" class="form-control" name="cast" required>
               </textarea>
-              <form method="POST" action="" enctype="multipart/form-data">
+             
               <lable>Photo</lable>
               <input type="file" class="form-control" name="photo" required>
-              <button type="submit" class="btn btn-primary">Add film</button> 
-</form>
-              `
+             
+              <div>
+                <label for="formGroupExampleInput" class="form-label">Gener</label> <br>
+                @foreach($geners as $item)
+                <input type="checkbox" name="geners[]" value="{{$item->id}}">
+                <label for="formGroupExampleInput" >{{$item->name}}</label>
+                 @endforeach
+                    </div>
 
-</div>
               
-              </form>   
+              <button type="submit" class="btn btn-primary">Add film</button> 
+
+              </form>
               
+                </div>
+              
+               
               </div>
             </div>
  

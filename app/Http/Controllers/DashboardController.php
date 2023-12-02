@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Gener;
+use App\Models\Film;
+
 use Gate;
 
 class DashboardController extends Controller
@@ -19,10 +22,13 @@ class DashboardController extends Controller
      }
     public function index()
     {
+       
         if(Gate::denies('dashboard')){
             return redirect(route('auth'));
         }
-        return view('dashbord.dashboard');
+         $geners = Gener::all();
+
+        return view('dashbord.dashboard',compact('geners'));
     }
 
     /**

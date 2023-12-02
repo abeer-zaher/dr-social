@@ -25,27 +25,38 @@ Route::get('/', function () {
     return view('website.index');
 })->middleware(['auth', 'verified'])
 ->name('auth');
-/*
-Route::get('/', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('auth');*/
+                     
 
 
-
+//Route dashboard
 Route::get('/dashboard', [DashboardController::class,'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
+//Route roles
 Auth::routes();
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/users','UserController', ['except' => ['show', 'create', 'store']]);
 
 });
 
+//Route film
 
 Route::get('/film/create','FilmController@create')->name('films.create');
 
 Route::post('/film/store','FilmController@store')->name('films.store');
 
+//Rout gener
+
+Route::get('/gener','GenerController@index')->name('geners');
+
+Route::get('/gener/create','GenerController@create')->name('geners.create');
+
+Route::post('/gener/store','GenerController@store')->name('geners.store');
+
+Route::get('/gener/destroy/{id}','GenerController@destroy')->name('geners.destroy');
+
+
  
+//Route home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
