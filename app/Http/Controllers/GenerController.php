@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Models\Gener;
+use App\Models\Film;
 
 class GenerController extends Controller
 {
@@ -14,7 +17,8 @@ class GenerController extends Controller
      */
     public function index()
     {
-        //
+        $gener= Gener::all();
+        return view('geners.index',compact('gener'));
     }
 
     /**
@@ -24,7 +28,7 @@ class GenerController extends Controller
      */
     public function create()
     {
-        //
+        return view('geners.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class GenerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+           
+            ]);
+            $gener = Gener::create([
+                'name'=> $request->name,
+            ]);
+            return redirect()->back();
     }
 
     /**
@@ -80,6 +91,8 @@ class GenerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gener = Gener::find($id);
+        $gener->delete();
+        return redirect()->back();
     }
 }
