@@ -1,28 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Gate;
 
-class DashboardController extends Controller
+class GenerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-     {
-         $this->middleware(['auth','verified']);
-     }
     public function index()
     {
-        if(Gate::denies('dashboard')){
-            return redirect(route('auth'));
-        }
-        return view('dashbord.dashboard');
+        //
     }
 
     /**
