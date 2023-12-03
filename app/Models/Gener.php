@@ -12,6 +12,6 @@ class Gener extends Model
         'name' 
     ];
     public function films(){
-   return $this->belongsToMany('APP\Models\Film');
+   return $this->belongsToMany('App\Models\Film');
 }
 }

@@ -12,13 +12,13 @@ class Film extends Model
          
         'name',
         'description',
-        'date-show',
+        'dateshow',
         'director',
-        'prod-company',
+        'prodcompany',
         'cast',
         'photo'
     ];
     public function geners(){
-        return $this->belongsToMany('APP\Models\Gener');
+        return $this->belongsToMany('App\Models\Gener');
      }
 }

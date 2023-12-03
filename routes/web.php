@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', function () {
 
 
 Route::get('/', function () {
+
     return view('website.index');
 })->middleware(['auth', 'verified'])
 ->name('auth');
@@ -33,6 +35,9 @@ Route::get('/dashboard', [DashboardController::class,'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
+
+
+
 //Route roles
 Auth::routes();
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
@@ -40,11 +45,17 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
 });
 
+ 
+
+
 //Route film
+Route::get('/film','FilmController@index')->name('films');
 
 Route::get('/film/create','FilmController@create')->name('films.create');
 
 Route::post('/film/store','FilmController@store')->name('films.store');
+
+Route::get('/film/destroy/{id}','FilmController@destroy')->name('films.destroy');
 
 //Rout gener
 
