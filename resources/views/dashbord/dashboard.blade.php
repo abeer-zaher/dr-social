@@ -194,6 +194,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
       
       </br>
       <a class="btn btn-success" href="{{route('admin.users.index')}}">show users</a>
+        </br>
+        </br>
+      <a class="btn btn-success" href="{{route('auth')}}">webiste</a>
+      
+      </br>
+      </br>
+      <a class="btn btn-success" href="{{route('films')}}">show films</a>
+      
 
       </nav>
       <!-- /.sidebar-menu -->
@@ -237,8 +245,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h5 class="m-0">Add film</h5>
               </div>
             <div class="card-body">
-             
-              <form action="{{route('films.store')}}" method="POST">
+ 
+              <form action="{{route('films.store')}}" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token()}}"/>
               <div class="form-group">
              
@@ -250,13 +258,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </textarea>
              
               <lable>Date show</lable>
-              <input type="text" class="form-control" name="date-show" required>
+              <input type="text" class="form-control" name="dateshow" required>
              
               <lable>director</lable>
               <input type="text" class="form-control" name="director" required>
              
               <lable>prod-company</lable>
-              <input type="text" class="form-control" name="prod-company" required>
+              <input type="text" class="form-control" name="prodcompany" required>
              
               <lable>cast</lable>
               <textarea type="text" class="form-control" name="cast" required>
@@ -268,7 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div>
                 <label for="formGroupExampleInput" class="form-label">Gener</label> <br>
                 @foreach($geners as $item)
-                <input type="checkbox" name="geners[]" value="{{$item->id}}">
+                <input type="checkbox" name="gener[]" value="{{$item->gener_id}}">
                 <label for="formGroupExampleInput" >{{$item->name}}</label>
                  @endforeach
                     </div>

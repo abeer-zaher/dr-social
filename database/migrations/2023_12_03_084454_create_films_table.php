@@ -17,9 +17,9 @@ return new class extends Migration
             $table->increments('film_id');
             $table->string('name');
             $table->text('description');
-            $table->string('date-show');
+            $table->string('dateshow');
             $table->string('director');
-            $table->string('prod-company');
+            $table->string('prodcompany');
             $table->longtext('cast');
             $table->string('photo');
             $table->timestamps();

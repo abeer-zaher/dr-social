@@ -17,6 +17,9 @@ class GenerController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('geners')){
+            return redirect(route('auth'));
+        }
         $gener= Gener::all();
         return view('geners.index',compact('gener'));
     }
@@ -28,6 +31,9 @@ class GenerController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('geners.create')){
+            return redirect(route('auth'));
+        }
         return view('geners.create');
     }
 
@@ -39,9 +45,12 @@ class GenerController extends Controller
      */
     public function store(Request $request)
     {
+        if(Gate::denies('geners.store')){
+            return redirect(route('auth'));
+        }
         $request->validate([
             'name'=>'required',
-           
+  
             ]);
             $gener = Gener::create([
                 'name'=> $request->name,
@@ -91,6 +100,9 @@ class GenerController extends Controller
      */
     public function destroy($id)
     {
+        if(Gate::denies('geners.destroy')){
+            return redirect(route('auth'));
+        }
         $gener = Gener::find($id);
         $gener->delete();
         return redirect()->back();

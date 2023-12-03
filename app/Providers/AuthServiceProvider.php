@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
+use laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+         'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -24,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        Passport::routes();
 
          Gate::define('edit-users', function($user){
             return $user->hasRole('admin');
@@ -33,6 +35,26 @@ class AuthServiceProvider extends ServiceProvider
          });
 
          Gate::define('dashboard', function($user){
+            return $user->hasRole('admin');
+
+         });
+
+         Gate::define('geners', function($user){
+            return $user->hasRole('admin');
+
+         });
+
+         Gate::define('geners.create', function($user){
+            return $user->hasRole('admin');
+
+         });
+
+         Gate::define('geners.store', function($user){
+            return $user->hasRole('admin');
+
+         });
+
+         Gate::define('geners.destroy', function($user){
             return $user->hasRole('admin');
 
          });
