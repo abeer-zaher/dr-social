@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
 
-class RegisterController extends BaseController
+class AuthController extends BaseController
 {
     public function register(Request $request)
     {
@@ -39,8 +39,8 @@ class RegisterController extends BaseController
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
             $user = Auth::user();
             $success['token'] = $user->createToken('Mohammad')->accessToken;
-        $success['name'] = $user->name;
-        return $this->sendResponse( $success , 'user registerd successfuly');
+            $success['name'] = $user->name;
+            return $this->sendResponse( $success , 'user registerd successfuly');
 
         }
         else {

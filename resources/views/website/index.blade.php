@@ -90,7 +90,7 @@
 						</article>
 					</div>
 					<div class="grid_4">
-						<div class="img_container"><a href=""><img src="images/index-2_img-2.jpg" alt="film"></a></a></div>
+						<div class="img_container"><a href=""><img src="images/index-2_img-2.jpg" alt="film"></a></div>
 						<article>
 							<h4>Film name</h4>
 							<p>Hamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis erose.</p>
