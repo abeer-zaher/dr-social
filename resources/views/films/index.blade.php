@@ -31,6 +31,7 @@
       <th scope="col">Prod company</th>
       <th scope="col">Cast</th>
       <th scope="col">photo</th>
+      <th scope="col">gener</th>
     </tr>
   </thead>
   <tbody>
@@ -47,16 +48,22 @@
       <td>{{ $item->prodcompany }}</td>
       <td>{{ $item->cast }}</td>
       <td>{{ $item->photo }}</td>
+      <td>{{$item->geners}}</td>
+      <!--@php
+							$film_geners = $item->geners;
+							@foreach ($film_geners as $film_gener)
+							$film_gener->name;
+							@endforeach
+						
+							@endphp
+							{{$film_geners}}
 
-      <td>
+
+      <td></td>-->
       <div class="row"> 
-        <div class="col-sm"> 
-      <a class="btn btn-success" href="{{ route('films.edit',$item->id) }}">Edit</a>
-        </div>
+        
          
-          <div class="col-sm"> 
-      <a  class="btn btn-warning" href="{{ route('soft.delete',$item->id) }}">Soft Delete </a>
-        </div>
+           
         
           </div>
           </div> 

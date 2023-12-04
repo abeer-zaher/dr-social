@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\WebsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,7 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified']);*/
 
 
-Route::get('/', function () {
-
-    return view('website.index');
-})->middleware(['auth', 'verified'])
+Route::get('/',[WebsiteController::class,'index'])->middleware(['auth', 'verified'])
 ->name('auth');
                      
 
