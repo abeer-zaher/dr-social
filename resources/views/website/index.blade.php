@@ -83,68 +83,22 @@
 				</div>
 				<div id="touch_gallery">
 					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-1-big.jpg"><img src="images/index-2_img-1.jpg" alt="film"></a></div>
+						@foreach($films as $item)
+						<div class="img_container"><img src="{{$item->photo}}" alt="film"></div>
 						<article>
-							<h4>Film name</h4>
-							<p>Gamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros.</p>
+							<h4>{{$item->name}}</h4>
+							<lable>Description</lable><p>{{$item->description}}</p>
+							<lable>Date show</lable><p>{{$item->dateshow}}</p>
+							<lable>Director</lable><p>{{$item->director}}</p>
+							<lable>Prodcompany</lable><p>{{$item->prodcompany}}</p>
+							<lable>Cast</lable><p>{{$item->cast}}</p>
+							 <button type="submit" class="btn btn-warning">Detail</button>
+							
 						</article>
+						
 					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href=""><img src="images/index-2_img-2.jpg" alt="film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Hamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis erose.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-3-big.jpg"><img src="images/index-2_img-3.jpg" alt="Film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Famus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros eto.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-4-big.jpg"><img src="images/index-2_img-4.jpg" alt="Film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Samus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eroserto.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-5-big.jpg"><img src="images/index-2_img-5.jpg" alt="film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Gamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-6-big.jpg"><img src="images/index-2_img-6.jpg" alt="Film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Lamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eroso.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-7-big.jpg"><img src="images/index-2_img-7.jpg" alt="Film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Wamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eroser.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-8-big.jpg"><img src="images/index-2_img-8.jpg" alt="Film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Kamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis erose.</p>
-						</article>
-					</div>
-					<div class="grid_4">
-						<div class="img_container"><a href="images/index-2_img-9-big.jpg"><img src="images/index-2_img-9.jpg" alt="film"></a></div>
-						<article>
-							<h4>Film name</h4>
-							<p>Gamus at magna non nunc tristique rhoncuseri tym. Aliquam nibh ante, egestas id dictum aterert commodo re luctus libero. Praesent faucibus malesuada cibuste. Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci sed Curabitur vel lorem sit amet nulla ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros.</p>
-						</article>
-					</div>
+					@endforeach
+					
 				</div>
 			</div>
 		</div>
