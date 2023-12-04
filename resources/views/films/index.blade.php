@@ -15,10 +15,9 @@
 </div>
   
 <div class="container">
-  @if($message = Session::get('success'))
-  @endif
+  
   <div class="alert alert-primary" role="alert">
-    {{$message}}
+   
 </div>
 </div> 
 <table class="table">

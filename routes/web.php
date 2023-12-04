@@ -45,9 +45,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
 });
 
- 
-
-
+  
 //Route film
 Route::get('/film','FilmController@index')->name('films');
 
