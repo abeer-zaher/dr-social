@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     public function register(Request $request)
     {
