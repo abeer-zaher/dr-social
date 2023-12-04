@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::post('register','API\RegisterController@register');
+Route::post('login','API\RegisterController@login');
+
+Route::middleware('auth:api')->group(function (){
+    Route::get('films','API\FilmController@inedx')->name('films');
+    Route::post('/film/store','API\FilmController@store')->name('films.store');
+    Route::get('geners','API\RegitserController@index')->nqme('geners');
+
+});

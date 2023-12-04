@@ -75,7 +75,7 @@ class FilmController extends Controller
 
              $film->geners()->attach($request->geners);
 
-             return redirect()->back();
+             return redirect()->back()->withSuccess('تمت الإضافة');
 
 
  

@@ -233,7 +233,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    <div class="mt-2">
+      @include('messages')
+    </div>
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
@@ -276,7 +278,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div>
                 <label for="formGroupExampleInput" class="form-label">Gener</label> <br>
                 @foreach($geners as $item)
-                <input type="checkbox" name="gener[]" value="{{$item->gener_id}}">
+                <input type="checkbox" name="geners[]" value="{{$item->gener_id}}">
                 <label for="formGroupExampleInput" >{{$item->name}}</label>
                  @endforeach
                     </div>

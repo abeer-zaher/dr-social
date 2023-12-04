@@ -9,7 +9,7 @@ use validator;
 use App\Http\Resources\Film as filmResource;
 use Illuminate\Http\Request;
 
-class FilmController extends Controller
+class FilmController extends BaseController
 {
     public function index()
     {
@@ -36,6 +36,8 @@ class FilmController extends Controller
         $film = Film::create($input);
         return $this->sendResponse( new productResource($product) , 'Product created successfuly');
 
+
     }
+ 
 
 }
