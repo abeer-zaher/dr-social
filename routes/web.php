@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Film\FilmController;
@@ -43,6 +44,9 @@ Route::get('/dashboard',[DashboardController::class,'index'])
 
 //Route roles
 Auth::routes();
+
+Route::get('/ajaxupload', [RegisterController::class,'upload']);
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/users','UserController', ['except' => ['show', 'create', 'store']]);
 
