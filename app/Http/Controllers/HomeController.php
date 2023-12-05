@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Film;
+use App\Models\Gener;
+
 
 class HomeController extends Controller
 {
@@ -11,18 +14,15 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
+/*
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+
+        $films = Film::all();
+        return view('home')->with('films',$films);
     }
 }

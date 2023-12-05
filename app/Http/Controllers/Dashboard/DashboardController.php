@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Dashboard;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Film\FilmController;
 use App\Models\Gener;
 use App\Models\Film;
 
@@ -22,7 +25,7 @@ class DashboardController extends Controller
      }
     public function index()
     {
-       
+
         if(Gate::denies('dashboard')){
             return redirect(route('auth'));
         }

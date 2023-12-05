@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\API\BaseController as BaseController;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -23,14 +25,14 @@ class AuthController extends BaseController
 
         ]) ;
         if($validator->fails()){
-            return $this->sendError('Please validate error' , $validator->errors());
+            return $this->sendResponse($validator->errors(),'Please validate error',422);
         }
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = User::Create($input);
         $success['token'] = $user->createToken('Mohammad')->accessToken;
         $success['name'] = $user->name;
-        return $this->sendResponse( $success , 'user registerd successfuly');
+        return $this->sendResponse( $success , 'user registerd successfuly',200);
     }
 
     public function login(Request $request)
@@ -40,14 +42,14 @@ class AuthController extends BaseController
             $user = Auth::user();
             $success['token'] = $user->createToken('Mohammad')->accessToken;
             $success['name'] = $user->name;
-            return $this->sendResponse( $success , 'user registerd successfuly');
+            return $this->sendResponse( $success , 'user registerd successfuly',200);
 
         }
         else {
-            return $this->sendError('Please  chack your auth' ,['error'=>'Unauthorised']);
+            return $this->sendResponse(['error'=>'Unauthorised'],'Please  chack your auth' ,422);
         }
-       
- 
+
+
 }
 
 }

@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FilmController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Film\FilmController;
+use App\Http\Controllers\Gener\GenerController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\Website\WebsiteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,16 +26,18 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified']);*/
 
 
-Route::get('/',[WebsiteController::class,'index'])->middleware(['auth', 'verified'])
+Route::get('/',[WebsiteController::class,'index'])
+->middleware(['auth', 'verified'])
 ->name('auth');
-                     
+
 
 
 //Route dashboard
-Route::get('/dashboard', [DashboardController::class,'index'])
-->middleware(['auth', 'verified'])
-->name('dashboard');
 
+
+Route::get('/dashboard',[DashboardController::class,'index'])
+->middleware(['auth','verified'])
+->name('dashboard');
 
 
 
@@ -43,27 +48,26 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
 });
 
-  
+
 //Route film
-Route::get('/film','FilmController@index')->name('films');
+Route::controller(FilmController::class)->group(function(){
+    Route::get('/film','index')->name('films');
+    Route::get('/film/create', 'create')->name('films.create');
+    Route::post('/film/store', 'store')->name('films.store');
+    Route::get('/film/destroy/{id}', 'destroy')->name('films.destroy');
 
-Route::get('/film/create','FilmController@create')->name('films.create');
-
-Route::post('/film/store','FilmController@store')->name('films.store');
-
-Route::get('/film/destroy/{id}','FilmController@destroy')->name('films.destroy');
+});
 
 //Rout gener
 
-Route::get('/gener','GenerController@index')->name('geners');
+Route::controller(GenerController::class)->group(function(){
+    Route::get('/gener', 'index')->name('geners');
+    Route::get('/gener/create','create')->name('geners.create');
+    Route::post('/gener/store', 'store')->name('geners.store');
+    Route::post('/gener/destroy/{id}','destroy')->name('geners.destroy');
 
-Route::get('/gener/create','GenerController@create')->name('geners.create');
-
-Route::post('/gener/store','GenerController@store')->name('geners.store');
-
-Route::get('/gener/destroy/{id}','GenerController@destroy')->name('geners.destroy');
+});
 
 
- 
 //Route home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

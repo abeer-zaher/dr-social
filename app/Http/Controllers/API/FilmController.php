@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\API\AuthController;
 use App\Models\Film;
 use validator;
 use App\Http\Resources\Film as filmResource;
@@ -38,6 +39,6 @@ class FilmController extends BaseController
 
 
     }
- 
+
 
 }
