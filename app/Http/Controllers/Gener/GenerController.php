@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Gener;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Film;
+
 use App\Models\Gener;
-
-
-class WebsiteController extends Controller
+use App\Models\Film;
+use Gate;
+class GenerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,11 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-         $films = Film::all();
-         return view('website.index')->with('films',$films);
+        if(Gate::denies('geners')){
+            return redirect(route('auth'));
+        }
+        $gener= Gener::all();
+        return view('geners.index',compact('gener'));
     }
 
     /**
@@ -27,7 +31,10 @@ class WebsiteController extends Controller
      */
     public function create()
     {
-        //
+        if(Gate::denies('geners.create')){
+            return redirect(route('auth'));
+        }
+        return view('geners.create');
     }
 
     /**
@@ -38,7 +45,17 @@ class WebsiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Gate::denies('geners.store')){
+            return redirect(route('auth'));
+        }
+        $request->validate([
+            'name'=>'required',
+
+            ]);
+            $gener = Gener::create([
+                'name'=> $request->name,
+            ]);
+            return redirect()->back();
     }
 
     /**
@@ -83,6 +100,11 @@ class WebsiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Gate::denies('geners.destroy')){
+            return redirect(route('auth'));
+        }
+        $gener = Gener::find($id);
+        $gener->delete();
+        return redirect()->back();
     }
 }

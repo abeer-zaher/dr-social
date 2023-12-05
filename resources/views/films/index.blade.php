@@ -1,5 +1,5 @@
 @extends('layouts.app')
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +9,17 @@
   <title>Films</title>
 </head>
 <body>
- 
+
  <div class="jumbotron container">
-  
+
 </div>
-  
+
 <div class="container">
-  
+
   <div class="alert alert-primary" role="alert">
-   
+
 </div>
-</div> 
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -38,7 +38,7 @@
     @php
     $i=0;
     @endphp
-     @foreach ($films as $item) 
+     @foreach ($films as $item)
     <tr>
       <th scope="row">{{++$i}}</th>
       <td>{{ $item->name }}</td>
@@ -49,42 +49,32 @@
       <td>{{ $item->cast }}</td>
       <td>{{ $item->photo }}</td>
       <td>{{$item->geners}}</td>
-      <!--@php
-							$film_geners = $item->geners;
-							@foreach ($film_geners as $film_gener)
-							$film_gener->name;
-							@endforeach
-						
-							@endphp
-							{{$film_geners}}
 
 
-      <td></td>-->
-      <div class="row"> 
-        
-         
-           
-        
+      <div class="row">
+
+
+
+
           </div>
-          </div> 
+          </div>
 
      </td>
 
     </tr>
     @endforeach
-    
+
   </tbody>
 </table>
-  
+
     </div>
 
     <form action="{{ route('films.create')}}" method="POST">
-          
+
           <input type="hidden" name="_token" value="{{ csrf_token()}}"/>
           <a class="btn btn-success" href="{{ route('films.create')}}" >Create</a>
           </form>
 
-  
+
 </body>
 </html>
- 

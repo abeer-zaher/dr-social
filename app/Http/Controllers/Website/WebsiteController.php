@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Gener;
-use App\Models\FilmGener;
 
 
-class FilmController extends Controller
+class WebsiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,9 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $films = Film::all();
-         
-        return view('films.index',compact('films'));
+    {
+         $films = Film::all();
+         return view('website.index')->with('films',$films);
     }
 
     /**
@@ -29,11 +27,8 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-         $geners = Gener::all();
-        return view('dashbord.dashboard',compact('geners')); 
-       // return view('dashbord.dashboard');
-
+    {
+        //
     }
 
     /**
@@ -44,43 +39,7 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-         
-
-        $request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'dateshow'=>'required',
-            'director'=>'required',
-            'prodcompany'=>'required',
-            'cast'=>'required',
-            'photo'=>'required|image',
-            'geners'=>'required'
-             
-            ]);
-           
-            $photo = $request->photo;
-            $newPhoto = time().$photo->getClientOriginalName();
-            $photo->move('images/',$newPhoto);
-
-            $film = Film::create([
-                 
-                'name'=>$request->name,
-                'description'=>$request->description,
-                'dateshow'=>$request->dateshow,
-                'director'=>$request->director,
-                'prodcompany'=>$request->prodcompany,
-                'cast'=>$request->cast,
-                'photo'=>'images/'.$newPhoto
-
-             ]);
- 
-
-             $film->geners()->attach($request->geners);
-
-             return redirect()->back()->withSuccess('تمت الإضافة');
-
-
- 
+        //
     }
 
     /**

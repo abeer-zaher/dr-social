@@ -92,13 +92,14 @@
 							<lable>Director</lable><p>{{$item->director}}</p>
 							<lable>Prodcompany</lable><p>{{$item->prodcompany}}</p>
 							<lable>Cast</lable><p>{{$item->cast}}</p>
-							 <button type="submit" class="btn btn-warning">Detail</button>
-							
+
+							<button type="submit" class="btn btn-warning">Detail</button>
+
 						</article>
-						
+
 					</div>
 					@endforeach
-					
+
 				</div>
 			</div>
 		</div>

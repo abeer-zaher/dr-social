@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
       </li>
-       
+
     </ul>
 
     <!-- Right navbar links -->
@@ -172,8 +172,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->name}}</a>
-          
-         
+
+
         </div>
       </div>
 
@@ -191,17 +191,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-      
+
       </br>
       <a class="btn btn-success" href="{{route('admin.users.index')}}">show users</a>
         </br>
         </br>
       <a class="btn btn-success" href="{{route('auth')}}">webiste</a>
-      
+
       </br>
       </br>
-      <a class="btn btn-success" href="{{route('films')}}">show films</a>
-      
+      <a class="btn btn-success" href="{{ route('films') }}">show films</a>
+
+    </br>
+    </br>
+    <a class="btn btn-success" href="{{ route('geners') }}">show geners</a>
+
+
+
 
       </nav>
       <!-- /.sidebar-menu -->
@@ -209,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.sidebar -->
   </aside>
 
-  
+
    <!--@yield('content')-->
    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -224,7 +230,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ol class="breadcrumb float-sm-right">
             <form action="{{route ('logout')}}" method ="post">
             <input type="hidden" name="_token" value="{{csrf_token() }}">
-            
+
             <button type="submit" class="btn btn-sm btn-li"><h5>Logout</h5> </button>
           </form>
             </ol>
@@ -247,34 +253,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h5 class="m-0">Add film</h5>
               </div>
             <div class="card-body">
- 
+
               <form action="{{route('films.store')}}" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token()}}"/>
               <div class="form-group">
-             
+
               <lable>Film name</lable>
               <input type="text" class="form-control" name="name" required>
-             
+
               <lable>Description</lable>
               <textarea type="text" class="form-control" name="description" required>
               </textarea>
-             
+
               <lable>Date show</lable>
               <input type="text" class="form-control" name="dateshow" required>
-             
+
               <lable>director</lable>
               <input type="text" class="form-control" name="director" required>
-             
+
               <lable>prod-company</lable>
               <input type="text" class="form-control" name="prodcompany" required>
-             
+
               <lable>cast</lable>
               <textarea type="text" class="form-control" name="cast" required>
               </textarea>
-             
+
               <lable>Photo</lable>
               <input type="file" class="form-control" name="photo" required>
-             
+
               <div>
                 <label for="formGroupExampleInput" class="form-label">Gener</label> <br>
                 @foreach($geners as $item)
@@ -283,17 +289,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  @endforeach
                     </div>
 
-              
-              <button type="submit" class="btn btn-primary">Add film</button> 
+
+              <button type="submit" class="btn btn-primary">Add film</button>
 
               </form>
-              
+
                 </div>
-              
-               
+
+
               </div>
             </div>
- 
+
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
@@ -302,7 +308,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content -->
     </div>
   <!-- /.content-wrapper -->
-    
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -321,7 +327,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-   
+
   </footer>
 </div>
 <!-- ./wrapper -->

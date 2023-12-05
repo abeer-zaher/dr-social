@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Film;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use App\Models\Gener;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Models\Film;
+use App\Models\Gener;
+use App\Models\FilmGener;
 
-class GenerController extends Controller
+
+class FilmController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +19,10 @@ class GenerController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('geners')){
-            return redirect(route('auth'));
-        }
-        $gener= Gener::all();
-        return view('geners.index',compact('gener'));
+        $films = Film::all();
+
+        return view('films.index',compact('films'));
+
     }
 
     /**
@@ -31,10 +32,10 @@ class GenerController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('geners.create')){
-            return redirect(route('auth'));
-        }
-        return view('geners.create');
+         $geners = Gener::all();
+        return view('dashbord.dashboard',compact('geners'));
+
+
     }
 
     /**
@@ -45,17 +46,43 @@ class GenerController extends Controller
      */
     public function store(Request $request)
     {
-        if(Gate::denies('geners.store')){
-            return redirect(route('auth'));
-        }
+
+
         $request->validate([
             'name'=>'required',
-  
+            'description'=>'required',
+            'dateshow'=>'required',
+            'director'=>'required',
+            'prodcompany'=>'required',
+            'cast'=>'required',
+            'photo'=>'required|image',
+            'geners'=>'required'
+
             ]);
-            $gener = Gener::create([
-                'name'=> $request->name,
-            ]);
-            return redirect()->back();
+
+            $photo = $request->photo;
+            $newPhoto = time().$photo->getClientOriginalName();
+            $photo->move('images/',$newPhoto);
+
+            $film = Film::create([
+
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'dateshow'=>$request->dateshow,
+                'director'=>$request->director,
+                'prodcompany'=>$request->prodcompany,
+                'cast'=>$request->cast,
+                'photo'=>'images/'.$newPhoto
+
+             ]);
+
+
+             $film->geners()->attach($request->geners);
+
+             return redirect()->back()->withSuccess('تمت الإضافة');
+
+
+
     }
 
     /**
@@ -100,11 +127,6 @@ class GenerController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('geners.destroy')){
-            return redirect(route('auth'));
-        }
-        $gener = Gener::find($id);
-        $gener->delete();
-        return redirect()->back();
+        //
     }
 }

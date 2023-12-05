@@ -17,5 +17,6 @@ class GenerController extends Controller
         $geners = Gener::all();
         return $this->sendResponse(filmResource::collection($geners),'All geners sent');
     }
-    
+
+
 }
