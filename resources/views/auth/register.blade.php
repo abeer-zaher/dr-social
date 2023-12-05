@@ -29,7 +29,8 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                <input onkeyup="CheckEmail(this.value)" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -74,4 +75,21 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('#email').on('onKeyUp',function(event){
+            event.preventDefault();
+
+            jQuery.ajax({
+                url:"{{url('ajaxupload')}}",
+                data:jQuery('#email').serialize(),
+                type:post,
+                success:function(result){
+
+                }
+            })
+            alert('hello');
+          });
+    });
+    </script>
 @endsection
