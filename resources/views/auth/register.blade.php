@@ -30,8 +30,8 @@
 
                             <div class="col-md-6">
 
-                                <input onkeyup="CheckEmail(this.value)" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                <input onkeyup="upload" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <span id="check_span"></span>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,21 +75,5 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $('#email').on('onKeyUp',function(event){
-            event.preventDefault();
 
-            jQuery.ajax({
-                url:"{{url('ajaxupload')}}",
-                data:jQuery('#email').serialize(),
-                type:post,
-                success:function(result){
-
-                }
-            })
-            alert('hello');
-          });
-    });
-    </script>
 @endsection

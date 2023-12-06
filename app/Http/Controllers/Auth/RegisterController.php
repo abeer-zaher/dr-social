@@ -73,7 +73,12 @@ class RegisterController extends Controller
     }
     public function upload(Request $request){
 
-        return !is_null(User::where('email',$str)->first());
+
+       /* error_log($request->email);
+
+        console.log($request->email);*/
+
+        return !is_null(User::where('email',$request->email)->first());
 
     }
 }

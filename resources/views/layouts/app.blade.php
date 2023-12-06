@@ -77,5 +77,48 @@
             @yield('content')
         </main>
     </div>
+    <script >
+    <script>
+        $(document).ready(function(){
+            console.log(1);
+            // $('#email').keyup(function(event){
+            $('#email').on('keyup',function(event){
+
+                event.preventDefault();
+                console.log(1);
+                jQuery.ajax({
+                    url:"{{url('ajaxupload')}}",
+                    data:jQuery('#email').serialize(),
+                    type:'get',
+                    alert("hello");
+
+                    success:function(result){
+                        console.log(8);
+
+                        /* if(resulte){
+                          // $('#check_span').text('X');
+                           $em = document.getElementById("email");
+                          console.log(em);
+                          error_log('hit me');
+                          document.getElementById("email").style.color ="green";
+
+
+                         }else{
+
+                            //jQuery('#check_span').text('Y');
+                            error_log('hit me');
+                            document.getElementById("email").style.color ="black";
+
+                         }
+                        //jQuery('#email').style.color='green';*/
+
+                    }
+
+
+                })
+
+              });
+        });
+        </script>
 </body>
 </html>
