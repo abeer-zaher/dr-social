@@ -82,12 +82,12 @@
 
     <script>
         $(document).ready(function(){
-            console.log(1);
-            // $('#email').keyup(function(event){
+
+
             $('#email').on('keyup',function(event){
 
                 event.preventDefault();
-                console.log(1);
+
                 jQuery.ajax({
                     url:"{{url('ajaxupload')}}",
                     data:jQuery('#email').serialize(),
@@ -95,7 +95,6 @@
 
 
                     success:function(result){
-                        console.log(8);
 
 
                          if(result){
@@ -105,9 +104,6 @@
 
 
                          }else{
-
-
-
 
                             document.getElementById("email").style.borderColor ="green";
 
