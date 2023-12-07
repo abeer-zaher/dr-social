@@ -15,6 +15,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
@@ -77,5 +79,59 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        $(document).ready(function(){
+
+
+            $('#email').on('keyup',function(event){
+
+                event.preventDefault();
+
+                jQuery.ajax({
+                    url:"{{url('ajaxupload')}}",
+                    data:jQuery('#email').serialize(),
+                    type:'get',
+
+
+                    success:function(result){
+
+
+                         if(result){
+
+
+                          document.getElementById("email").style.borderColor ="red";
+
+
+                         }else{
+
+                            document.getElementById("email").style.borderColor ="green";
+
+                         }
+
+
+                     }
+
+
+                })
+
+              });
+        });
+        </script>
+
+       <!-- <script>
+           const input = document.querySelector("input"),
+           emailIcon = document.querySelector(".email-icon")
+            input.addEventListener("keyup",()=>{
+                if(input.value === ""){
+                    return console.log("input is empty")
+                }
+                if(input.value.match(pattern)){
+                    emailIcon.classList.replace("uil-envelope","uil-check-circle");
+                }
+                emailIcon.classList.replace("uil-check-circle","uil-envelope");
+            })
+        </script>-->
+
 </body>
 </html>
