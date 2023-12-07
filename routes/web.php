@@ -45,7 +45,7 @@ Route::get('/dashboard',[DashboardController::class,'index'])
 //Route roles
 Auth::routes();
 
-Route::get('/ajaxupload', [RegisterController::class,'load']);
+Route::get('/ajaxupload', [RegisterController::class,'upload']);
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/users','UserController', ['except' => ['show', 'create', 'store']]);

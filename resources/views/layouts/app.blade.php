@@ -15,6 +15,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
@@ -77,7 +79,7 @@
             @yield('content')
         </main>
     </div>
-    <script >
+
     <script>
         $(document).ready(function(){
             console.log(1);
@@ -90,29 +92,29 @@
                     url:"{{url('ajaxupload')}}",
                     data:jQuery('#email').serialize(),
                     type:'get',
-                    alert("hello");
+
 
                     success:function(result){
                         console.log(8);
 
-                        /* if(resulte){
-                          // $('#check_span').text('X');
-                           $em = document.getElementById("email");
-                          console.log(em);
-                          error_log('hit me');
-                          document.getElementById("email").style.color ="green";
+
+                         if(result){
+
+
+                          document.getElementById("email").style.borderColor ="red";
 
 
                          }else{
 
-                            //jQuery('#check_span').text('Y');
-                            error_log('hit me');
-                            document.getElementById("email").style.color ="black";
+
+
+
+                            document.getElementById("email").style.borderColor ="green";
 
                          }
-                        //jQuery('#email').style.color='green';*/
 
-                    }
+
+                     }
 
 
                 })
@@ -120,5 +122,20 @@
               });
         });
         </script>
+
+       <!-- <script>
+           const input = document.querySelector("input"),
+           emailIcon = document.querySelector(".email-icon")
+            input.addEventListener("keyup",()=>{
+                if(input.value === ""){
+                    return console.log("input is empty")
+                }
+                if(input.value.match(pattern)){
+                    emailIcon.classList.replace("uil-envelope","uil-check-circle");
+                }
+                emailIcon.classList.replace("uil-check-circle","uil-envelope");
+            })
+        </script>-->
+
 </body>
 </html>

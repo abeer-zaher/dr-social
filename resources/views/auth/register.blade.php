@@ -30,7 +30,9 @@
 
                             <div class="col-md-6">
 
-                                <input onkeyup="upload" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input onkeyup="upload()" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <!--<i class="uil uil-envelope email-icon"></i>
+                                 <i class="uil uil-check-circle"></i>-->
                                 <span id="check_span"></span>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
